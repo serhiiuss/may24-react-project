@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import NavMenu from './components/NavMenu';
+import MoviesPage from './pages/MoviesPage';
+import MovieDetailsPage from './pages/MovieDetailsPage';
+import {ThemeProvider} from './switcher/ThemeSwitch';
+import GenrePage from "./components/GenrePage";
+import MovieByGenrePage from "./components/MovieByGenrePage";
 import './App.css';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <ThemeProvider>
+        <Router>
+          <NavMenu/>
+          <Routes>
+            <Route path="/" element={<MoviesPage/>}/>
+            <Route path="/movies" element={<MoviesPage/>}/>
+            <Route path="/movies/:id" element={<MovieDetailsPage/>}/>
+            <Route path="/genres" element={<GenrePage/>}/>
+            <Route path="/movies/genre/:genreId" element={<MovieByGenrePage/>}/>
+          </Routes>
+        </Router>
+      </ThemeProvider>
   );
-}
+};
 
 export default App;
