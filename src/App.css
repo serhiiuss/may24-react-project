@@ -74,8 +74,8 @@ body {
 }
 
 :root {
-  --background-color: #ffffff;
-  --text-color: #000000;
+  --background-color: #c5bebe;
+  --text-color: #ffffff;
 }
 
 [data-theme="dark"] {
